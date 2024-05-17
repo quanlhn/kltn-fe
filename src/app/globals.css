@@ -16,7 +16,7 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,10 +24,59 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+.dropdownMenu {
+  transition: opacity 0.5s, transform 0.5s, height 0.5s, display 0.5s allow-discrete;
+}
+
+.number-ordometer {
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.addingButton {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: #50d8d7;
+  border-radius: 25px;
+}
+
+.log-button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+.log-button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+/* .login-and-signup-page {
+  background-image: url(/public/20988.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
