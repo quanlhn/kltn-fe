@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { CREATE_ACCOUNT } from '@/app/consts/path';
 import { Form, Input } from 'antd';
 import ScheduleContext, { GoalType } from '../../../SheduleContext';
-import { GOAL_LEVEL_1 } from '../options/page';
+import { GOAL_LEVEL_1 } from '@/app/consts/interface';
+
 
 
 const Affirmation = () => {

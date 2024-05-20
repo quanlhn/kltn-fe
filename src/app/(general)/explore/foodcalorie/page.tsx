@@ -5,27 +5,19 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HR_STYLE, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTICLE_TITLE, SIDE_ARTICLE_CHILD_DIV, SIDE_ARTICLES_DIV, SIDE_ARTICLE_IMAGE, SIDE_ARTICLE_TITLE, SIDE_ARTICLE_DISCRIBE, MAIN_ARTICLE_AVATAR, PARAGRAPH_STYLES, PARAGRAPH_TITLE } from '@/app/consts/className';
 import { Button, Cascader, Checkbox, Form, Input, InputNumber, Radio, Select, Table, TreeSelect } from 'antd';
 import { API_PATH } from '@/app/consts/path';
-import { FoodType } from '@/app/consts/interface';
+import { FoodType, Result1 } from '@/app/consts/interface';
 import { FoodForm } from './foodForm';
 import ReactDOM from 'react-dom';
 import { MinusOutlined } from '@ant-design/icons';
 import { createRoot } from 'react-dom/client';
 
 
-export type Result = {
-    ten: string,
-    protein: number,
-    calo: number,
-    lipit: number,
-    fiber: number,
-    carbohydrat: number,
-    amount: number
-}
+
 
 function FoodNutrients() {
 
     const formsRef =  useRef<HTMLDivElement>(null)
-    const [results, setResults] = useState<Array<Result>>([{
+    const [results, setResults] = useState<Array<Result1>>([{
         ten: '',
         protein: 0,
         calo: 0,

@@ -104,3 +104,26 @@ export interface UnitType {
     label: string,
     coefficient: number
 }
+
+export type Result = {
+    ten: string,
+    protein: number,
+    calo: number,
+    lipit: number,
+    fiber: number,
+    carbohydrat: number,
+    amount: number, 
+    key: number
+}
+
+export type Result1 = {
+    ten: string,
+    protein: number,
+    calo: number,
+    lipit: number,
+    fiber: number,
+    carbohydrat: number,
+    amount: number
+}
+
+export const GOAL_LEVEL_1 = ['lose-weight', 'maintain-weight', 'gain-weight', 'gain-muscle', 'modify-diet', 'gain-flexibility']

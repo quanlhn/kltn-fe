@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 import { CREATE_ACCOUNT } from '@/app/consts/path';
 import { Form, Input } from 'antd';
 import ScheduleContext, { GoalType, OptionType } from '../../../SheduleContext';
+import { GOAL_LEVEL_1 } from '@/app/consts/interface';
 
 
-export const GOAL_LEVEL_1 = ['lose-weight', 'maintain-weight', 'gain-weight', 'gain-muscle', 'modify-diet', 'gain-flexibility']
+
 const GOAL_LEVEL_2 = ['gain-muscle', 'modify-diet', 'gain-flexibility']
 
 const GoalsOption = () => {
