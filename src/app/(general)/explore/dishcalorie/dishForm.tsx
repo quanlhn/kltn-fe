@@ -5,8 +5,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HR_STYLE, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTICLE_TITLE, SIDE_ARTICLE_CHILD_DIV, SIDE_ARTICLES_DIV, SIDE_ARTICLE_IMAGE, SIDE_ARTICLE_TITLE, SIDE_ARTICLE_DISCRIBE, MAIN_ARTICLE_AVATAR, PARAGRAPH_STYLES, PARAGRAPH_TITLE } from '@/app/consts/className';
 import { Button, Cascader, Checkbox, Form, Input, InputNumber, Radio, Select, TreeSelect } from 'antd';
 import { API_PATH } from '@/app/consts/path';
-import { FoodType, UnitType } from '@/app/consts/interface';
-import { Result } from './page';
+import { FoodType, Result, UnitType } from '@/app/consts/interface';
+
 import { CheckOutlined, CheckSquareFilled, CheckSquareOutlined, MinusOutlined } from '@ant-design/icons';
 
 type props = {
