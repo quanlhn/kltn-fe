@@ -11,6 +11,7 @@ type UserType = {
   isLoggedIn: boolean,
   gender: string,
   birth: Date,
+  schedule: string
 }
 
 interface User {
@@ -41,6 +42,7 @@ export const UserProvider = ({
       gender: '',
       birth: new Date(),
       isLoggedIn: false,
+      schedule: ''
   })
     return (
         <UserContext.Provider value={{user, setUser}}>

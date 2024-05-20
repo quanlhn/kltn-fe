@@ -35,7 +35,51 @@ const CreateAccount = () => {
             password: values.password,
         }
         scheduleContext.setSchedule(updateSchedule)
-        router.push(`${CREATE_ACCOUNT}/result`)
+
+        fetch('http://localhost:8080/api/schedule/generateSchedule', {
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+            body: JSON.stringify({
+                name: scheduleContext.schedule.name,
+                phoneNumber: values.email,
+                email: values.phone,
+                password: values.password,
+                gender: scheduleContext.schedule.gender, 
+                birth: scheduleContext.schedule.birth,
+                goalsLv1: scheduleContext.schedule.goalsLv1.goal,
+                goalsLv2: scheduleContext.schedule.goalsLv2.goal,
+                goalsLv3: scheduleContext.schedule.goalsLv3.goal,
+                barriersLv: scheduleContext.schedule.barriersLv.map((b) => b.value),
+                wishes: scheduleContext.schedule.wishes.map((w) => w.value),
+                baseActivity: scheduleContext.schedule.baseActivity,
+                stepsPerDay: scheduleContext.schedule.stepsPerDay,
+                height: scheduleContext.schedule.height,
+                weight: scheduleContext.schedule.weight,
+                goalWeight: scheduleContext.schedule.goalWeight,
+                weeklyGoal: scheduleContext.schedule.weeklyGoal,
+                levelExercise: scheduleContext.schedule.levelExercise,
+                daysPerWeek: scheduleContext.schedule.daysPerWeek,
+                periods: scheduleContext.schedule.periods,
+                availableExercises: scheduleContext.schedule.availableExercises,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.userData.success) {
+                router.push(`${CREATE_ACCOUNT}/result`)
+            } else {
+                console.log(data)
+                alert('Tạo tài khoản không thành công')
+            }
+        })
+
+
+
+
 
     }
 

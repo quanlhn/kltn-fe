@@ -54,7 +54,7 @@ const LoginForm: React.FC<Props> = ({fc}: Props) => {
             .then(data => {
                 
                 if (data.success) {
-                    console.log(data.name)
+                    // console.log(data.schedule)
                     const userData = {
                         id: data.id,
                         name: data.name,
@@ -64,10 +64,11 @@ const LoginForm: React.FC<Props> = ({fc}: Props) => {
                         gender: data.gender,
                         birth: data.birth,
                         role: data.role,
+                        schedule: data.schedule
                     }
                     user.setUser(userData)
                     localStorage.setItem('user', JSON.stringify(userData));
-                    router.back()
+                    router.push(`/tracking/${userData.id}`)
                 } else {
                     console.log(data.message)
                 }
@@ -77,7 +78,7 @@ const LoginForm: React.FC<Props> = ({fc}: Props) => {
 
     return (
         <div className="sign-in-container form-container w-full mt-16">
-            <h1 className="font-bold text-2xl">Log In</h1>
+            <h1 className="font-bold text-2xl">Đăng nhập</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group pt-6">
                     {/* <label htmlFor="name">Name</label> */}
@@ -91,7 +92,7 @@ const LoginForm: React.FC<Props> = ({fc}: Props) => {
                     Nếu chưa có tài khoản, đăng ký <span onClick={() => fc('signUp')} className="italic text-[#ff416c] cursor-pointer" >tại đây</span>
                 </div>
                 <div className="form-group absolute left-0 right-0 mx-auto bottom-16">
-                    <button className="log-button">Login</button>
+                    <button className="log-button">Đăng nhập</button>
                 </div>
             </form>
         </div>

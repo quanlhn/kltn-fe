@@ -221,13 +221,13 @@ const CalorieCout = () => {
                     }
                 ]} 
                 dataSource={[
-                    {key: '1', criteria: "Giữ nguyên cân nặng", result: `${(result.amr)}`},
-                    {key: '2', criteria: <div className='flex justify-between'><div>Giảm cân nhẹ </div> <div>(0.25kg/tuần)</div></div>, result: `${result.wLossLv1} calo/ngày`},
-                    {key: '3', criteria: "Giảm cân (0.5kg/tuần)", result: `${(result.wLossLv2)} calo/ngày`},
-                    {key: '4', criteria: "Giảm cân cực đồ (1kg/tuần)", result: `${(result.wLossLv3)} calo/ngày`},
-                    {key: '5', criteria: "Tăng cân nhẹ (0.25kg/tuần)", result: `${(result.wGainLv1)} calo/ngày`},
-                    {key: '5', criteria: "Tăng cân (0.5kg/tuần)", result: `${(result.wGainLv2)} calo/ngày`},
-                    {key: '6', criteria: "Tăng cân cực độ (1kg/tuần)", result: `${(result.wGainLv3)} calo/ngày`},
+                    {key: '1', criteria: "Giữ nguyên cân nặng", result: `${(result.amr)} calo/ngày`},
+                    {key: '2', criteria: <div className='flex justify-between'><div>Giảm cân nhẹ </div> <div>0.25kg/tuần</div></div>, result: `${result.wLossLv1} calo/ngày`},
+                    {key: '3', criteria: <div className='flex justify-between'><div>Giảm cân </div> <div>0.5kg/tuần</div></div>, result: `${(result.wLossLv2)} calo/ngày`},
+                    {key: '4', criteria: <div className='flex justify-between'><div>Giảm cân cực đồ </div> <div>1kg/tuần</div></div>, result: `${(result.wLossLv3)} calo/ngày`},
+                    {key: '5', criteria: <div className='flex justify-between'><div>Tăng cân nhẹ </div> <div>0.25kg/tuần</div></div>, result: `${(result.wGainLv1)} calo/ngày`},
+                    {key: '5', criteria: <div className='flex justify-between'><div>Tăng cân </div> <div>0.5kg/tuần</div></div>, result: `${(result.wGainLv2)} calo/ngày`},
+                    {key: '6', criteria: <div className='flex justify-between'><div>Tăng cân cực độ </div> <div>1kg/tuần</div></div>, result: `${(result.wGainLv3)} calo/ngày`},
                 ]}
             />
             </div>

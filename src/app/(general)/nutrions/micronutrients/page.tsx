@@ -1,11 +1,11 @@
 import React from 'react';
 
-import cover from "../../../../public/micronutrionsPage/ddViLuong.jpg"
-import whatIsMicronutrients from "../../../../public/micronutrionsPage/whatIsMicronutrients.jpg"
-import article2 from "../../../../public/micronutrionsPage/article2.png"
-import article3 from "../../../../public/micronutrionsPage/article3.png"
-import article4 from "../../../../public/micronutrionsPage/article4.jpg"
-import vitaminB from "../../../../public/micronutrionsPage/vitaminB.png"
+import cover from "../../../../../public/micronutrionsPage/ddViLuong.jpg"
+import whatIsMicronutrients from "../../../../../public/micronutrionsPage/whatIsMicronutrients.jpg"
+import article2 from "../../../../../public/micronutrionsPage/article2.png"
+import article3 from "../../../../../public/micronutrionsPage/article3.png"
+import article4 from "../../../../../public/micronutrionsPage/article4.jpg"
+import vitaminB from "../../../../../public/micronutrionsPage/vitaminB.png"
 import { HR_STYLE, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTICLE_TITLE, SIDE_ARTICLE_CHILD_DIV, SIDE_ARTICLES_DIV, SIDE_ARTICLE_IMAGE, SIDE_ARTICLE_TITLE, SIDE_ARTICLE_DISCRIBE, MAIN_ARTICLE_AVATAR } from '@/app/consts/className';
 
 
@@ -31,8 +31,8 @@ function Micronutrients() {
                         <div className='flex mb-8 '>
                             <img src={article2.src} alt="" className={SIDE_ARTICLE_IMAGE} />
                             <div className={SIDE_ARTICLE_CHILD_DIV}>
-                                <div className={SIDE_ARTICLE_TITLE}>Micronutrients have major impact on health</div>
-                                <div className={SIDE_ARTICLE_DISCRIBE}>Nearly 30 vitamins and minerals that your body cannot manufacture in sufficient amounts on its own are called "essential micronutrients." </div> 
+                                <div className={SIDE_ARTICLE_TITLE}>Các chất dinh dưỡng vi lượng có ảnh hưởng lớn đối với sức khỏe.</div>
+                                <div className={SIDE_ARTICLE_DISCRIBE}>Gần 30 loại vitamin và khoáng chất mà cơ thể của bạn không thể sản xuất đủ lượng một cách tự nhiên được gọi là "vi chất dinh dưỡng cần thiết"." </div> 
                             </div>
                         </div>
                         <div className='flex mb-8'>

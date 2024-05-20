@@ -22,6 +22,7 @@ type ScheduleType = {
   name: string,
   phoneNumber: string,
   email: string,
+  password: string
   gender: string,
   birth: Date,
   goalsLv1: GoalType,
@@ -64,6 +65,7 @@ export const ScheduleProvider = ({
         name: '',
         phoneNumber: '',
         email: '',
+        password: '',
         gender: '',
         birth: new Date(),
         goalsLv1: {goal: '', label: '', level: 1},

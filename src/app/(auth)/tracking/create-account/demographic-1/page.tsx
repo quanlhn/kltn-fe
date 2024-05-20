@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from "next/navigation";
 import { CREATE_ACCOUNT } from '@/app/consts/path';
-import { Form, Input, InputNumber, Radio } from 'antd';
+import { DatePicker, Form, Input, InputNumber, Radio } from 'antd';
 import ScheduleContext, { GoalType } from '../SheduleContext';
 
 
@@ -21,14 +21,20 @@ const Demographic1 = () => {
     const handleSubmit = (values: any) => {
         const updateSchedule = {
             ...scheduleContext.schedule,
+            birth: values.birth.toDate(),
             height: values.height,
-            weight: values.height,
+            weight: values.weight,
             gender: values.gender,
             goalWeight: values.goalWeight
         }
+        console.log(values)
 
         scheduleContext.setSchedule(updateSchedule)
         router.push(`${CREATE_ACCOUNT}/weekly-goal`)
+    }
+
+    const onDateChange = (values: any) => {
+        console.log(values.toDate())
     }
 
     return (
@@ -43,26 +49,35 @@ const Demographic1 = () => {
                         layout='vertical'
                         size='large'
                         wrapperCol={{
-                            span: 20,
+                            span: 16,
                         }}
-                        labelCol={{
-                            span: 18,
-                        }}
+                        
                         style={{marginLeft: '40px', marginRight: '40px',}}
                         onFinish={handleSubmit}
                     >
-                        <div className='flex flex-col justify-between'>
+                        <div className='flex flex-col '>
                             <div>
-                                <Form.Item 
-                                    label={ <p className='text-lg font-semibold'>Bạn là ?</p> } 
-                                    name='gender'
-                                    rules={[{ required: true, message: 'Bạn chưa chọn giới tính'}]}
-                                >
-                                    <Radio.Group style={{marginLeft: '1rem'}} >
-                                        <Radio value="male" > Nam </Radio>
-                                        <Radio value="female"> Nữ </Radio>
-                                    </Radio.Group>
-                                </Form.Item> 
+                                <div className='flex justify-between'>
+                                    <Form.Item 
+                                        label={ <p className='text-lg font-semibold'>Bạn là ?</p> } 
+                                        name='gender'
+                                        rules={[{ required: true, message: 'Bạn chưa chọn giới tính'}]}
+                                    >
+                                        <Radio.Group style={{marginLeft: '1rem'}} >
+                                            <Radio value="male" > Nam </Radio>
+                                            <Radio value="female"> Nữ </Radio>
+                                        </Radio.Group>
+                                    </Form.Item> 
+
+                                    <Form.Item
+                                        label={ <p className='text-lg font-semibold'>Ngày sinh</p> } 
+                                        name='birth'
+                                        rules={[{ required: true, message: 'Bạn chưa chọn ngày sinh'}]}
+                                    >
+                                        <DatePicker onChange={onDateChange} style={{width: '200px'}} />
+                                    </Form.Item>
+
+                                </div>
 
                                 <Form.Item 
                                     label={ <p className='text-lg font-semibold'>Cân nặng của bạn là ...</p> }

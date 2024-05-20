@@ -101,7 +101,7 @@ const SignupForm: React.FC = () => {
 
     return (
         <div className="signup-form-container form-container w-full mt-4">
-            <h1 className="font-bold text-2xl">Create Account</h1>
+            <h1 className="font-bold text-2xl">Tạo tài khoản</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group pt-6">
                     {/* <label htmlFor="name">Name</label> */}
@@ -145,7 +145,7 @@ const SignupForm: React.FC = () => {
                         className="hidden text-[12px] mx-auto text-left w-2/3 italic text-[#ff416c]">
                             Nhập lại mật khẩu không đúng
                     </div>
-                    <button className="log-button">Signup</button>
+                    <button className="log-button">Đăng ký</button>
                 </div>
             </form>
         </div>

@@ -13,6 +13,93 @@ export interface FoodType {
     __v: number
 }
 
+export interface Schedule {
+    days: [{
+        date: Date,
+        mealPlan: string
+        workoutExercises?: string,
+        calories: number
+    }],
+    userId: string,
+    process: string,
+    goalsLv1: string,
+    goalsLv2: string,
+    goalsLv3: string,
+    barriers: [string],
+    wishes: [string],
+    height: number,
+    weightUpdated: number,
+    weight: number,
+    goalWeight: number,
+    weeklyGoal: Number,
+    baseActivity: number,
+    levelExercise: string,
+    daysPerWeek: number,
+    periods: number,
+    availableExercises: [string]
+}
+
+export interface MealPlan {
+    date: Date,
+    meals: [
+        {
+            name: string,
+            dishes: [
+                {
+                    id: string,
+                    amount: number
+                }
+            ],
+            foodIds?: [
+                {
+                    id: string,
+                    amount: number
+                }
+            ]
+
+        }
+    ],
+    calo: number,
+    protein: number,
+    lipit: number,
+    carbohydrat: number, 
+    fiber: number,
+}
+
+export interface WorkoutExercises {
+    date: Date,
+    exerciseID: [string],
+    totalDuration: number,
+    calorieBurned: number,
+    restTime: number
+}
+
+export interface Exercise {
+    name: string,
+    type: string,
+    description: string,
+    muscleGroups: string,
+    difficultyLevel: string,
+    duration: number,
+    reps: number,
+    imageUrl: string,
+    videoUrl: string,
+    category: string,
+    met: number
+}
+
+export interface Dish {
+    ten: string,
+    don_vi_tinh: string,
+    loai: string,
+    calo: number,
+    protein: number,
+    lipit: number,
+    carbohydrat: number,
+    fiber: number,
+    realAmount: number
+}
+
 export interface UnitType {
     label: string,
     coefficient: number
