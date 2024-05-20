@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useRouter } from 'next/navigation'
+import { API_PATH } from "@/app/consts/path";
 
 
 const SignupForm: React.FC = () => {
@@ -68,7 +69,7 @@ const SignupForm: React.FC = () => {
             }
     
             if (password === repass) {
-                fetch('http://localhost:8080/api/register', {
+                fetch(`${API_PATH}register`, {
                     method: 'POST',
                     mode: 'cors', 
                     headers: {

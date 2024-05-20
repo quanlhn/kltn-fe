@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from "next/navigation";
-import { CREATE_ACCOUNT } from '@/app/consts/path';
+import { API_PATH, CREATE_ACCOUNT } from '@/app/consts/path';
 import { Form, Input, InputNumber, Radio, Select } from 'antd';
 import ScheduleContext, { GoalType } from './SheduleContext';
 
@@ -36,7 +36,7 @@ const CreateAccount = () => {
         }
         scheduleContext.setSchedule(updateSchedule)
 
-        fetch('http://localhost:8080/api/schedule/generateSchedule', {
+        fetch(`${API_PATH}schedule/generateSchedule`, {
             method: 'POST',
             mode: 'cors', 
             headers: {

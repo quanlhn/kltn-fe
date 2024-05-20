@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useRouter } from 'next/navigation'
 import UserContext from "../../UserContext";
+import { API_PATH } from "@/app/consts/path";
 
 type Props = {
     fc: (text: string) => void
@@ -38,7 +39,7 @@ const LoginForm: React.FC<Props> = ({fc}: Props) => {
             });
         }
         // console.log(state)
-        fetch('http://localhost:8080/api/login', {
+        fetch(`${API_PATH}login`, {
             method: 'POST',
             mode: 'cors', 
             headers: {
