@@ -15,6 +15,8 @@ import { ScheduleOutlined } from '@ant-design/icons';
 import { CgGym } from "react-icons/cg";
 import { GiMeal } from "react-icons/gi";
 import { GiStairsGoal } from "react-icons/gi";
+import { DefaultOptionType } from 'antd/es/select';
+import { useRouter } from 'next/navigation';
 
 const TrackingUser = () => {
 
@@ -26,7 +28,11 @@ const TrackingUser = () => {
 
     const [plansDate, setPlansDate] = useState<Array<Date>>([])
     const [currentDayWorkout, setCurrentDayWorkout] = useState<Date>()
-    const [todayExercises, setTodayExercises] = useState<Array<Exercise>>()
+    const [todayExercises, setTodayExercises] = useState<Array<Exercise>>([])
+    const [savedExercises, setSavedExercises] = useState<Array<Exercise>>([])
+    const [editWorkout, setEditWorkout] = useState(false)
+    const [similarExercises, setSimilarExercises] = useState<Array<Exercise>>([])
+    const [editWorkoutOptions, setEditWorkoutOptions] = useState<Array<DefaultOptionType>>([])
 
     const [currentDayMeal, setCurrentDayMeal] = useState<Date>()
     const [breakfast, setBreakfast] = useState<Array<Dish>>([])
@@ -34,9 +40,11 @@ const TrackingUser = () => {
     const [dinner, setDinner] = useState<Array<Dish>>([])
     const [snack, setSnack] = useState<Array<Dish>>([])
 
+
     const [tab, setTab] = useState(1)
 
-
+    const router = useRouter()
+    
     const userContext = useContext(UserContext)
     const defaultUser = {
         userID: 0,
@@ -61,6 +69,8 @@ const TrackingUser = () => {
                 setScheduleId(JSON.parse(localStorage.user).schedule)
 
 
+            } else {
+                router.push('/tracking/create-account/welcome')
             }
         }, [localStorage['user']])
     }
@@ -200,6 +210,7 @@ const TrackingUser = () => {
                         }
                     }
                     setTodayExercises(currentEx)
+                    setSavedExercises(currentEx)
                 }
             }
         }
@@ -272,6 +283,58 @@ const TrackingUser = () => {
         fetchTodayMeal()
     }, [currentDayMeal])
 
+    useEffect(() => {
+        const fetchSimilarWorkout = async () => {
+            if (todayExercises && editWorkout) {
+                const exTypes: Array<string> = []
+                todayExercises.forEach((ex) => {
+                    if (!exTypes.includes(ex.type)) {
+                        exTypes.push(ex.type)  
+                    }
+                })
+                // console.log(exTypes)
+                try {
+                    const response = await fetch(`${API_PATH}workout/getExercisesByTypes`, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            types: exTypes,
+                        })
+                    });
+                    const data = await response.json();
+                    setSimilarExercises(data.exercises)
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+
+        fetchSimilarWorkout()
+    }, [editWorkout])
+
+    useEffect(() => {
+        const muscleGroups: Array<string> = []
+        similarExercises.forEach((exercise) => {
+            if (!muscleGroups.includes(exercise.muscleGroups)) {
+                muscleGroups.push(exercise.muscleGroups)
+            }
+        })
+        const options: Array<DefaultOptionType> = []
+        muscleGroups.forEach((muscleGroup) => {
+            const exercises = similarExercises.filter((ex) => ex.muscleGroups == muscleGroup)
+            const currentOpts: Array<DefaultOptionType> = exercises.map((ex) => ({label: ex.name, value: JSON.stringify(ex)}))
+            options.push({
+                label: <span>{muscleGroup}</span>,
+                title: muscleGroup,
+                options: currentOpts
+            })
+        })
+        setEditWorkoutOptions(options)
+    }, [similarExercises])
+
     const getListData = (value: Dayjs) => {
         const days = schedule?.days;
         let listData: { type: string; content: string; }[] = [];
@@ -325,10 +388,25 @@ const TrackingUser = () => {
 
     const changeWorkoutDate = (value: any) => {
         setCurrentDayWorkout(new Date(value))
+        setEditWorkout(false)
     }
 
     const changeMealDate = (value: any) => {
         setCurrentDayMeal(new Date(value))
+    }
+
+    const changeExercise = (value: any, index: any) => {
+        console.log(JSON.parse(value))
+        console.log(index)
+        const newExercise = savedExercises.map((ex, i) => {
+            if (index == i) {
+                return JSON.parse(value)
+            } else {
+                return ex
+            }
+        })
+        console.log(newExercise)
+        setSavedExercises(newExercise)
     }
 
     const tableColumns = [
@@ -485,23 +563,41 @@ const TrackingUser = () => {
                                     style={{ width: 150 }}
                                     options={plansDate.map(date => ({label: dayjs(date).format('DD/MM/YYYY'), value: date.toString()}))} />
                                 <div className='text-2xl font-semibold'>Tập luyện</div>
-                                <button className='w-28 h-8 rounded-lg border-2'>Thay đổi</button>
+                                <div>
+                                    {editWorkout 
+                                    ?
+                                        <div>
+                                            <button className='w-28 h-8 rounded-lg border-2 shadow-md hover:bg-blue-100 active:bg-blue-300 mr-3' onClick={() => setEditWorkout(false)}>Lưu</button>                                        
+                                            <button className='w-28 h-8 rounded-lg border-2 shadow-md hover:bg-blue-100 active:bg-blue-300' onClick={() => setSavedExercises(todayExercises)}>Hủy</button>                                        
+                                        </div>
+                                    :
+                                        <button className='w-28 h-8 rounded-lg border-2 shadow-md hover:bg-blue-100 active:bg-blue-300' onClick={() => setEditWorkout(!editWorkout)}>Thay đổi</button>                                        
+                                    }
+                                </div>
                             </div>
 
                             <div className='grid grid-cols-3 gap-6 items-center mt-10 px-3'>
-                                {todayExercises
+                                {savedExercises
                                 ? 
-                                todayExercises.map((exercise, index) => (
-                                    <div key={index} className='border-2 rounded-xl flex items-center justify-center mb-3'> 
-                                        <div className=''>
+                                savedExercises.map((exercise, index) => (
+                                    <div key={index} className='border-2 rounded-xl flex flex-col  mb-3 pb-5'> 
+                                        <div className='flex flex-col justify-center'>
                                             <div>{exercise.imageUrl ? <img src={exercise.imageUrl} alt="" className='h-40 rounded-t-lg' /> : <video controls src={exercise.videoUrl} className='w-full rounded-t-lg' onClick={(e) => e.currentTarget.play()} />}</div>
-                                            <div className='text-lg font-semibold my-3 px-2'>{exercise.name}</div>
-                                            <div className='mb-3 px-2'>{exercise.type == 'gym' ? `${exercise.reps} reps, ${exercise.duration} sets` : `${exercise.reps} vòng / phút, trong 15p` }</div>
+                                            <div className='text-lg font-semibold my-3 px-5'>{exercise.name}</div>
+                                            <div className='mb-3 px-5'>{exercise.type == 'gym' ? `${exercise.reps} reps, ${exercise.duration} sets` : `${exercise.reps} vòng / phút, trong 15p` }</div>
                                         </div>
+                                        { editWorkout 
+                                        ?
+                                            <div>
+                                                <Select style={{width: '240px', paddingLeft: '1.25rem'}} onChange={(value) => changeExercise(value, index)} options={editWorkoutOptions} />    
+                                            </div>
+                                        :
+                                            <></>   
+                                        }
                                     </div>
                                 ))
                                 : 
-                                'Hôm nay không tập bạn ei'
+                                <></>
                                 }
                             </div>
                         </div>

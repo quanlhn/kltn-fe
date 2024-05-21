@@ -9,11 +9,11 @@ const ExploreMenu = () => {
     const router = useRouter()
 
     return (
-        <div className={DROPDOWN_MENU_STYLE} >
+        <div className='z-10 dropdownMenu flex right-52 bg-menubg justify-between pt-6 pb-10 absolute w-60%' >
 
-            <div className="Strength-Training-Exercises min-w-72">
+            <div className="Strength-Training-Exercises mr-10 px-10">
                 <div className={MENU_LV1_STYLE}>
-                    <div className="">Tính các chỉ số cơ thể</div> 
+                    <div className=" ">Tính các chỉ số cơ thể</div> 
                     <RightCircleOutlined className="" />
                 </div>
                 <hr className={HR_STYLE} />
@@ -30,7 +30,7 @@ const ExploreMenu = () => {
 
             </div>
 
-            <div className="min-w-72">
+            <div className="px-10">
                 <div className={MENU_LV1_STYLE}>
                     <div className="">Tính lượng dinh dưỡng</div>
                     <RightCircleOutlined className="" />

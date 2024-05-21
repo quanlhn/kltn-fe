@@ -9,6 +9,10 @@ import ExercisesMenu from "./menus/exercisesMenu";
 import ExploreMenu from "./menus/exploreMenu";
 import UserContext from "../UserContext";
 import { useRouter } from "next/navigation";
+import { button } from "@material-tailwind/react";
+import type { MenuProps } from 'antd';
+import { API_PATH } from "../consts/path";
+import Cookies from 'js-cookie'
 
 const Header = () => {
 
@@ -16,14 +20,15 @@ const Header = () => {
     const [userName, setUserName] = useState('')
     const userContext = useContext(UserContext)
     const defaultUser = {
-        userID: 0,
+        id: '',
         name: '',
         phoneNumber: '',
         email: '',
         role:'',
         gender: '',
-        birth: '',
+        birth: new Date(),
         isLoggedIn: false,
+        schedule: ''
     }
     const [userStorage, setUserStorage] = useState(defaultUser)
 
@@ -38,17 +43,57 @@ const Header = () => {
                 }
             }
         }, [localStorage['user']])
+
+
     }
+
+    
+    const logOut = () => {
+        console.log('hihi')
+        localStorage.removeItem('user')
+        setUserStorage(defaultUser)
+        setUserName('')
+        userContext.setUser(defaultUser)
+        Cookies.remove('accessToken',)
+        fetch(API_PATH + 'user/logout', {
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                'Content-Type': 'application/json'
+                
+            },
+        })
+        .then(res => {
+            router.push('/')
+        })
+
+
+    }
+
+    const items: MenuProps['items'] = [{
+        key: '1',
+        label: (<button className="w-16 underline italic cursor-pointer" onClick={logOut} >Đăng xuất</button>)
+    }]
+
 
     const [currentDropdown, setCurrentDropdown] = useState(0);
 
+    const toTrackingPage = () => {
+        if (localStorage.user) {
+            console.log('hihi')
+            router.push(`/tracking/${userStorage.id}`)
+        } else {
+            console.log('haha')
+            router.push('/tracking/create-account/welcome')
+        }
+    }
 
 
     return (
         <div className="z-20 fixed top-0 left-0 right-0" onMouseLeave={() => setCurrentDropdown(0)} >
             <div className="bg-black text-white flex px-40 justify-between">
                 <div className="nav flex w-full">
-                    <div className="cursor-pointer logo px-6 py-5 font-serif font-extrabold text-2xl w-1/5">healthcare</div>
+                    <div className="cursor-pointer logo px-6 py-5 font-serif font-extrabold text-2xl w-1/5" onClick={() => router.push('/')}>healthcare</div>
                     <div className="w-[75%] flex justify-between">
                         <div className="flex cursor-pointer px-4 py-5 items-center" onMouseOver={() => setCurrentDropdown(1)}>
                             <div className="font-sans font-semibold mr-2 text-xl">Dinh dưỡng </div>
@@ -62,64 +107,18 @@ const Header = () => {
                             <div className="font-sans font-semibold mr-2 text-xl">Khám phá </div>
                             <DownOutlined className="text-sm mt-1" />
                         </div>
-                        <div className="flex cursor-pointer px-4 py-5 items-center" onMouseOver={() => setCurrentDropdown(4)}>
-                            <div className="font-sans font-semibold mr-2 text-xl">Lập kế hoạch</div>
-                            <DownOutlined className="text-sm mt-1" />
+                        <div className="flex cursor-pointer px-4 py-5 items-center" onClick={() => toTrackingPage()} onMouseOver={() => setCurrentDropdown(4)}>
+                            <div className="font-sans font-semibold mr-2 text-xl" >Lập kế hoạch</div>
                         </div>
                     </div>
-                    {/* <div className="menu h-[100%] w-[80%]">
-                        <Menu
-                            mode="horizontal"
-                            theme="dark"
-                            items={[
-                                {
-                                    label: 'Dinh dưỡng',
-                                    key: "dinhduong",
-                                    icon: <DownOutlined/>,
-                                    style: menuStyle,
-                                    children: [
-                                        {
-                                            label: <NutritionMenu />,
-                                            key: 'nutritionMenu',
-                                            style: {
-                                                height: "fit-content",
-                                            }
-                                        },
-                                    ]
-                                },
-                                {
-                                    label: 'Hoạt động thể chất',
-                                    key: "hdthechat",
-                                    style: menuStyle,
-                                    icon: <DownOutlined/>,
-                                },
-                                {
-                                    label: 'Khám phá',
-                                    key: "khampha",
-                                    style: menuStyle,
-                                    icon: <DownOutlined/>,
-                                },
-                                {
-                                    label: 'Theo dõi',
-                                    key: "theodoi",
-                                    style: menuStyle,
-                                    icon: <DownOutlined/>,
-                                },
-                            ]}
-                        >
-
-                        </Menu>
-
-                    </div> */}
-
 
                 </div>
                 <div className="search-user mx-6 w-56 font-sans flex items-center font-semibold text-lg">
                     {userName != '' 
                     ?
-                        <div>
-                            Xin chào, {userName}
-                        </div>
+                        <Dropdown menu={{ items }} placement="bottomRight">
+                            <div className="cursor-pointer">Xin chào, {userName}</div>
+                        </Dropdown>
                     :
                         <div className="cursor-pointer" onClick={() => router.push('/login-signup')} >Đăng ký / Đăng nhập</div>
                     }

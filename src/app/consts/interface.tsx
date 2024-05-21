@@ -75,6 +75,7 @@ export interface WorkoutExercises {
 }
 
 export interface Exercise {
+    _id: string,
     name: string,
     type: string,
     description: string,
