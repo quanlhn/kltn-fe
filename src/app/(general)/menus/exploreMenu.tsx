@@ -22,10 +22,10 @@ const ExploreMenu = () => {
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >BMI</div>
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bodyfatpercent')} >Tỉ lệ mỡ cơ thể</div>
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/calorie')} >Tính Calo của cơ thể</div>
-                    <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Waist-to-Height Ratio</div>
+                    {/* <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Waist-to-Height Ratio</div>
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Lean Body Mass</div>
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Body Composition</div>
-                    <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Resting Metabolic Rate</div>
+                    <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/bmi')} >Resting Metabolic Rate</div> */}
                 </div>
 
             </div>
@@ -40,7 +40,7 @@ const ExploreMenu = () => {
                 <div className="">
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/foodcalorie')} >Trong thực phẩm</div>
                     <div className={MENU_LV2_STYLE} onClick={() => router.push('/explore/dishcalorie')} >Trong món ăn</div>
-                    <div className={MENU_LV2_STYLE} >Trong thực đơn</div>
+                    {/* <div className={MENU_LV2_STYLE} >Trong thực đơn</div> */}
                     
                 </div>
 

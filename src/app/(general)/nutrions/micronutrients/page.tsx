@@ -9,19 +9,19 @@ import article3 from "../../../../../public/micronutrionsPage/article3.png"
 import article4 from "../../../../../public/micronutrionsPage/article4.jpg"
 import vitaminB from "../../../../../public/micronutrionsPage/vitaminB.png"
 import vitaminA from "../../../../../public/micronutrionsPage/vitaminA.jpg"
-import vitaminD from "../../../../../public/micronutrionsPage/vitaminD.jpg"
-import vitaminE from "../../../../../public/micronutrionsPage/vitaminE.jpg"
+import vitaminD from "../../../../../public/micronutrionsPage/vitaminD.png"
+import vitaminE from "../../../../../public/micronutrionsPage/vitaminE.png"
 import vitaminK from "../../../../../public/micronutrionsPage/vitaminK.jpg"
 import vitaminC from "../../../../../public/micronutrionsPage/vitaminC.jpg"
 
-import Ca from "../../../../../public/micronutrionsPage/Ca.jpg"
+import Ca from "../../../../../public/micronutrionsPage/Ca.png"
 import Fe from "../../../../../public/micronutrionsPage/fe.jpg"
 import Mg from "../../../../../public/micronutrionsPage/mg.jpg"
 import Na from "../../../../../public/micronutrionsPage/na.jpg"
 import Omega3 from "../../../../../public/micronutrionsPage/omega3.jpg"
 import Q10 from "../../../../../public/micronutrionsPage/q10.jpg"
 import Se from "../../../../../public/micronutrionsPage/se.jpg"
-import Zn from "../../../../../public/micronutrionsPage/Zn.jpg"
+import Zn from "../../../../../public/micronutrionsPage/Zn.png"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
