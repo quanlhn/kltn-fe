@@ -432,7 +432,7 @@ const TrackingUser = () => {
         let listData: { type: string; content: string; }[] = [];
         // console.log(diaryMeal)
         if (days) {
-            const meals = mealPlans.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'));
+            const meals = mealPlans ? mealPlans.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY')): null;
             const workout = workoutPlans.find(workout => dayjs(new Date(workout.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
             const doneWorkout = diaryWorkout.find(workout => dayjs(new Date(workout.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
             // const doneMeal = diaryMeal.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
