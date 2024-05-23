@@ -90,7 +90,7 @@ const Header = () => {
 
 
     return (
-        <div className="z-20 fixed top-0 left-0 right-0" onMouseLeave={() => setCurrentDropdown(0)} >
+        <div className="z-20 " onMouseLeave={() => setCurrentDropdown(0)} >
             <div className="bg-black text-white flex px-40 justify-between">
                 <div className="nav flex w-full">
                     <div className="cursor-pointer logo px-6 py-5 font-serif font-extrabold text-2xl w-1/5" onClick={() => router.push('/')}>healthcare</div>

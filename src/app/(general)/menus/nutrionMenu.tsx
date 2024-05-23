@@ -47,7 +47,7 @@ const NutritionMenus = ({currentDropdown, setCurrentDropdown}: PropsType) => {
             </div>
 
             <div className="Macronutrients min-w-72">
-                <div className={MENU_LV1_STYLE}>
+                <div className={MENU_LV1_STYLE} onClick={() => router.push('/nutrions/macronutrients')} >
                     <div className="">Chất dinh dưỡng đa lượng</div>
                     <RightCircleOutlined/>
                 </div>

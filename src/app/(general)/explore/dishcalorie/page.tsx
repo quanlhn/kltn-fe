@@ -108,7 +108,7 @@ function DishNutrients() {
     }
 
     return (
-        <div className='mt-28 z-0 mx-40 '>
+        <div className='mt-10 z-0 mx-40 '>
             <div className='text-5xl mb-8 font-semibold'>Tra cứu Dinh dưỡng trong món ăn và thực đơn</div>
 
             <div className="calculate-BMI px-10  py-8 rounded-2xl flex justify-between items-start">

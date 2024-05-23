@@ -138,9 +138,6 @@ export const FoodForm = ({index, results, setResults}: props) => {
         }
     }
 
-
-    
-
     useEffect(() => {
         if (selectedType) {
             fetch(API_PATH + 'calories-calculate/foodFilter', {
@@ -167,7 +164,7 @@ export const FoodForm = ({index, results, setResults}: props) => {
         (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 
     return (
-        <div className="my-3 flex justify-between">
+        <div className="my-3 flex ">
             <Form
                 // labelCol={{
                 //     span: 6,
@@ -205,7 +202,7 @@ export const FoodForm = ({index, results, setResults}: props) => {
                         optionFilterProp='children'
                         onChange={onChangeFood}
                         filterOption={filterOption}
-                        style={{ width: 230 }}
+                        style={{ width: 200 }}
                         options={
                             foods 
                             ?
@@ -219,26 +216,9 @@ export const FoodForm = ({index, results, setResults}: props) => {
                 <Form.Item label="Số lượng" name="amount" >
                     <InputNumber style={{ width: 130 }} onChange={onChangeAmount} addonAfter={currentUnit.label}/>
                 </Form.Item>
-
-                
-
-                {/* <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
-                    <input
-                        className='bg-blue-500 px-5 py-2 text-2xl font-semibold text-white rounded-xl cursor-pointer hover:drop-shadow-xl'
-                        type='submit'
-                        value='Tnh BMI'
-                    >
-
-                    </input>
-
-                </Form.Item> */}
             </Form>
             
-            {!isSubmit ? <CheckSquareOutlined onClick={setSubmitted} className='text-xl' /> : <CheckSquareFilled onClick={setNotSubmitted} className='text-xl' />}
-
-            
-            
-
+            {!isSubmit ? <CheckSquareOutlined onClick={setSubmitted} className='text-lg' /> : <CheckSquareFilled onClick={setNotSubmitted} className='text-lg' />}
         </div>
     );
 }

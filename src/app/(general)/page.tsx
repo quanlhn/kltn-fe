@@ -10,7 +10,7 @@ import { MAIN_ARTICLE_AVATAR, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTI
 
 export default function Home() {
   return (
-    <main className="bg-white-pattern h-full bg-cover pt-20 px-40">
+    <main className="bg-white-pattern h-full bg-cover px-40">
       <div className="flex w-full pt-16 justify-between ml-10 mb-5">
         <div className="relative w-[35rem] h-[35rem]">
           <img src={article1.src} className="w-[35rem] cursor-pointer" />

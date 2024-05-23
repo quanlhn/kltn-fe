@@ -125,7 +125,7 @@ const CalorieCout = () => {
  
 
     return (
-        <div className='mt-28 z-0 mx-40'>
+        <div className='mt-10 z-0 mx-40'>
             <div className='text-5xl mb-8 font-semibold'>Tính Calo</div>
             <p className={PARAGRAPH_STYLES} >Bộ tính Calo có thể được sử dụng để ước tính số calo mà một người cần tiêu thụ mỗi ngày. Bộ tính này cũng có thể cung cấp một số hướng dẫn đơn giản để tăng hoặc giảm cân.</p>
             <div className='flex border-slate-800 mt-8'>

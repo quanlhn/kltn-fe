@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 
 import cover from "../../../../../public/micronutrionsPage/ddViLuong.jpg"
@@ -6,12 +8,33 @@ import article2 from "../../../../../public/micronutrionsPage/article2.png"
 import article3 from "../../../../../public/micronutrionsPage/article3.png"
 import article4 from "../../../../../public/micronutrionsPage/article4.jpg"
 import vitaminB from "../../../../../public/micronutrionsPage/vitaminB.png"
+import vitaminA from "../../../../../public/micronutrionsPage/vitaminA.jpg"
+import vitaminD from "../../../../../public/micronutrionsPage/vitaminD.jpg"
+import vitaminE from "../../../../../public/micronutrionsPage/vitaminE.jpg"
+import vitaminK from "../../../../../public/micronutrionsPage/vitaminK.jpg"
+import vitaminC from "../../../../../public/micronutrionsPage/vitaminC.jpg"
+
+import Ca from "../../../../../public/micronutrionsPage/Ca.jpg"
+import Fe from "../../../../../public/micronutrionsPage/fe.jpg"
+import Mg from "../../../../../public/micronutrionsPage/mg.jpg"
+import Na from "../../../../../public/micronutrionsPage/na.jpg"
+import Omega3 from "../../../../../public/micronutrionsPage/omega3.jpg"
+import Q10 from "../../../../../public/micronutrionsPage/q10.jpg"
+import Se from "../../../../../public/micronutrionsPage/se.jpg"
+import Zn from "../../../../../public/micronutrionsPage/Zn.jpg"
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+
 import { HR_STYLE, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTICLE_TITLE, SIDE_ARTICLE_CHILD_DIV, SIDE_ARTICLES_DIV, SIDE_ARTICLE_IMAGE, SIDE_ARTICLE_TITLE, SIDE_ARTICLE_DISCRIBE, MAIN_ARTICLE_AVATAR } from '@/app/consts/className';
 
 
 function Micronutrients() {
     return (
-        <div className='mt-28 z-0 '>
+        <div className='mt-10 '>
             <div className='relative h-[22rem]'>
                 <img src={cover.src} className='w-screen h-[22rem]' /> 
                 <div className='text-5xl font-semibold absolute bottom-10 left-10'>Chất dinh dưỡng vi lượng</div>
@@ -58,28 +81,123 @@ function Micronutrients() {
                 <div className='text-3xl font-semibold mb-5'>Vitamin</div>
                 <hr className='border-t-2' />
 
-                <div className='vitamin mt-10'>
-                  <div className='px-10 w-full flex justify-between'>
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                  </div>
-                  <div className='px-10 mt-16 w-full flex justify-between'>
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                    <img src={vitaminB.src} alt="" className='w-36' />
-                  </div>
+                <div className='vitamin mt-10 '>
+                    <Swiper 
+                        slidesPerView={4}
+                        spaceBetween={20}
+                        navigation={true}
+                        modules={[Navigation]}
+                        className='mySwiper'
+                        loop = {true}
+                    >
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminA.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin A</div>
+                            </div>
+                        </SwiperSlide>
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminB.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin B</div>
+                            </div>
+                        </SwiperSlide>
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminC.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin C</div>
+                            </div>
+                        </SwiperSlide>
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminD.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin D</div>
+                            </div>
+                        </SwiperSlide>
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminE.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin E</div>
+                            </div>
+                        </SwiperSlide>
+                         <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={vitaminK.src} className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Vitamin K</div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
                 </div>
             </div>
 
+            <div className='mx-40 mt-20'>
+                <div className='text-3xl font-semibold mb-5'>Khoáng chất</div>
+                <hr className='border-t-2' />
+                <div className='vitamin mt-10 '>
+                    <Swiper 
+                        slidesPerView={4}
+                        spaceBetween={20}
+                        navigation={true}
+                        modules={[Navigation]}
+                        className='mySwiper'
+                        loop = {true}
+                    >
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Ca.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Canxi</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Fe.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Sắt</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Mg.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Magie</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Na.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Natri</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Omega3.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Omega 3</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Q10.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Q10</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Se.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Selen</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className='flex flex-col items-center ml-8'>
+                                <img src={Zn.src} alt="" className='w-36 rounded-full shadow-xl' />
+                                <div className='mt-2'>Kẽm</div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>                    
+                </div>
+            </div>
+
+            <div className="mx-40 mt-20">
+                <div className='text-3xl font-semibold mb-5'>Bài viết mới</div>
+                
+            </div>
         </div>
     );
 }

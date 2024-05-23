@@ -205,7 +205,7 @@ const BodyFatPage = () => {
     ]
 
     return (
-        <div className='mt-28 z-0 mx-40'>
+        <div className='mt-10 z-0 mx-40'>
              <div className='text-5xl mb-8 font-semibold'>Đo lương mỡ cơ thể</div>
             <div className='flex border-slate-800'>
             <Form

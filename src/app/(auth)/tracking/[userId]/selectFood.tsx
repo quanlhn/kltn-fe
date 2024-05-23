@@ -1,21 +1,9 @@
-'use client'
-
-import React, { useState, useRef, useEffect } from 'react';
-
-import { HR_STYLE, MAIN_ARTICLE_DISCRIBE, MAIN_ARTICLE_DIV, MAIN_ARTICLE_TITLE, SIDE_ARTICLE_CHILD_DIV, SIDE_ARTICLES_DIV, SIDE_ARTICLE_IMAGE, SIDE_ARTICLE_TITLE, SIDE_ARTICLE_DISCRIBE, MAIN_ARTICLE_AVATAR, PARAGRAPH_STYLES, PARAGRAPH_TITLE } from '@/app/consts/className';
-import { Button, Cascader, Checkbox, Form, Input, InputNumber, Radio, Select, Table, TreeSelect } from 'antd';
-import { API_PATH } from '@/app/consts/path';
-import { FoodType, Result1 } from '@/app/consts/interface';
 import { FoodForm } from './foodForm';
-import ReactDOM from 'react-dom';
-import { MinusOutlined } from '@ant-design/icons';
-import { createRoot } from 'react-dom/client';
+import { Result1 } from '@/app/consts/interface';
+import { Table } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 
-
-
-
-function FoodNutrients() {
-
+const SelectFood = ({setSavedFoods} : props) => {
     const formsRef =  useRef<HTMLDivElement>(null)
     const [results, setResults] = useState<Array<Result1>>([{
         ten: '',
@@ -33,9 +21,12 @@ function FoodNutrients() {
     //<FoodForm allFoodTypes={allFoodTypes} index={results.length-1} results={results} setResults={setResults} />
 
     useEffect(() => {
-        console.log(results)
         setForms(() => [...forms, <FoodForm key={results.length - 1}  index={results.length-1} results={results} setResults={setResults} />])
     }, [numForm])
+
+    useEffect(() => {
+        setSavedFoods(results)
+    }, [results])
 
     const addFoodForm = () => {
         setNumForm(() => numForm + 1)
@@ -109,14 +100,8 @@ function FoodNutrients() {
     }
 
     return (
-        <div className='mt-10 z-0 mx-40 '>
-            <div className='text-5xl mb-8 font-semibold'>Tra cứu Dinh dưỡng trong thực phẩm</div>
-            <div className="calculate-BMI px-10  py-8 rounded-2xl flex justify-between items-start">
-                <div className='w-[85%] ' ref={formsRef} >
-                    {forms}
-                    
-                </div>
-
+        <div>
+            <div className="calculate-BMI  py-3 rounded-2xl flex flex-col items-start">
                 <div className=''>
                     <button 
                         type="button" 
@@ -125,6 +110,10 @@ function FoodNutrients() {
                     >
                         +
                     </button>
+                </div>
+                <div className='w-[85%] ' ref={formsRef} >
+                    {forms}
+                    
                 </div>
 
             </div>
@@ -135,13 +124,14 @@ function FoodNutrients() {
                 pagination = {false}
 
             />
-
         </div>
     );
+};
+
+type props = {
+
+    setSavedFoods: React.Dispatch<React.SetStateAction<Result1[]>>
+    // allFoodTypes: Array<string>
 }
 
-export default FoodNutrients;
-
-const ChildComponent = () => {
-    return <h4>This is a child component</h4>
-}
+export default SelectFood;

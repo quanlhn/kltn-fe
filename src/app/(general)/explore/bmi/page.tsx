@@ -50,7 +50,7 @@ function Micronutrients() {
       }, [transformTo]);
 
     return (
-        <div className='mt-28 z-0 mx-40 '>
+        <div className='mt-10 z-0 mx-40 '>
             <div className='text-5xl mb-8 font-semibold'>Đo chỉ số BMI</div>
 
             <div className="calculate-BMI bg-[#eeeeee] border-slate-800 px-10 py-8 rounded-2xl flex justify-between items-center">
