@@ -225,7 +225,11 @@ const TrackingUser = () => {
             })
             .then(res => res.json())
             .then(data => {
-                setDiaryWorkout(data.diaryWorkout[0].days)
+                // console.log(data)
+                if (data.diaryWorkout.length > 0 ) {
+                    setDiaryWorkout(data.diaryWorkout[0].days)
+                    
+                }
             })
         }
 
@@ -242,12 +246,15 @@ const TrackingUser = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                setDiaryMeal(data.diaryMeals[0].days)
+                // console.log(data)
+                if (data.diaryMeals.length > 0) {
+                    setDiaryMeal(data.diaryMeals[0].days)
+
+                }
             })
         }
         
-        // fetchDairyMeal()
+        fetchDairyMeal()
         fetchDairyWorkout()
         fetchWorkoutPlans();
         fetchMealPlans();
@@ -935,13 +942,13 @@ const TrackingUser = () => {
                                         :
                                             <></>   
                                         }
-                                        <div></div>
                                     </div>
                                 ))
                                 : 
                                 <></>
                                 }
                             </div>
+                            {savedExercises ?
                             <div>
                                 <button 
                                     onClick={saveTodayWorkout}
@@ -950,6 +957,10 @@ const TrackingUser = () => {
                                         Đã tập và lưu các bài trên
                                 </button>
                             </div>
+                            :
+                            <></>
+
+                            }
                         </div>
                     )
                     }
