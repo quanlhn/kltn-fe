@@ -20,15 +20,15 @@ import lipit4 from "../../../../../public/macronutritionsPage/lipit/article4.jpg
 
 
 
+import Ca from "../../../../../public/micronutrionsPage/Ca.png"
+import Q10 from "../../../../../public/micronutrionsPage/q10.jpg"
+import Zn from "../../../../../public/micronutrionsPage/Zn.png"
 
-import Ca from "../../../../../public/micronutrionsPage/Ca.jpg"
 import Fe from "../../../../../public/micronutrionsPage/fe.jpg"
 import Mg from "../../../../../public/micronutrionsPage/mg.jpg"
 import Na from "../../../../../public/micronutrionsPage/na.jpg"
 import Omega3 from "../../../../../public/micronutrionsPage/omega3.jpg"
-import Q10 from "../../../../../public/micronutrionsPage/q10.jpg"
 import Se from "../../../../../public/micronutrionsPage/se.jpg"
-import Zn from "../../../../../public/micronutrionsPage/Zn.jpg"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
