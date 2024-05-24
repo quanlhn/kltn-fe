@@ -432,13 +432,13 @@ const TrackingUser = () => {
         let listData: { type: string; content: string; }[] = [];
         // console.log(diaryMeal)
         if (days) {
-            const meals = mealPlans ? mealPlans.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY')): null;
+            // const meals = mealPlans ? mealPlans.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY')): null;
             const workout = workoutPlans.find(workout => dayjs(new Date(workout.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
             const doneWorkout = diaryWorkout.find(workout => dayjs(new Date(workout.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
             // const doneMeal = diaryMeal.find(meal => dayjs(new Date(meal.date)).format('DD/MM/YYYY') == value.format('DD/MM/YYYY'))
-            if (meals) {
-                listData.push({ type: 'warning', content: `Cần hấp thu ${Math.floor(meals.calo)} calo` });
-            }
+            // if (meals) {
+            //     listData.push({ type: 'warning', content: `Cần hấp thu ${Math.floor(meals.calo)} calo` });
+            // }
             // if (doneMeal) {
             //     listData.push({ type: 'success', content: `Đã hấp thu ${Math.floor(doneMeal.calo)} calo` });
             // }
@@ -725,11 +725,11 @@ const TrackingUser = () => {
                         <div className='flex w-full pr-2 my-6'>
                             <div className='w-1/2 border-r-2 text-center'>
                                 <div className='text-lg text-blue-500'>CAO</div>
-                                <span className='text-xl font-semibold'>{schedule?.weight}</span><span className='text-xl text-gray-500'>cm</span>
+                                <span className='text-xl font-semibold'>{schedule?.height}</span><span className='text-xl text-gray-500'>cm</span>
                             </div>
                             <div className='w-1/2 border-l-2 text-center'>
                                 <div className='text-lg text-blue-500'>NẶNG</div>
-                                <span className='text-xl font-semibold'>{schedule?.height}</span><span className='text-xl text-gray-500'>kg</span>
+                                <span className='text-xl font-semibold'>{schedule?.weight}</span><span className='text-xl text-gray-500'>kg</span>
                             </div>
                         </div>
                     </div>
